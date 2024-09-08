@@ -1,4 +1,4 @@
-module github.com/charmbracelet/gum
+module github.com/hxlnt/gum
 
 go 1.21
 
