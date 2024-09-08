@@ -1,8 +1,7 @@
 name: goreleaser
 
 on:
-  release:
-    types: [edited, published, released]
+  push
 
 permissions:
   contents: write
