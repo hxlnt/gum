@@ -1,15 +1,32 @@
-name: Release
+name: goreleaser
 
 on:
   release:
-    types: [created, edited, published, released]
+    types: [created, published, released]
+
+permissions:
+  contents: write
 
 jobs:
-  release:
-    runs-on: ubuntu-22.04
-
+  goreleaser:
+    runs-on: ubuntu-latest
     steps:
-    - name: GoReleaser Action
-      # You may pin to the exact commit or the version.
-      # uses: goreleaser/goreleaser-action@5742e2a039330cbb23ebf35f046f814d4c6ff811
-      uses: goreleaser/goreleaser-action@v5.1.0
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      -
+        name: Set up Go
+        uses: actions/setup-go@v5
+      -
+        name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          # either 'goreleaser' (default) or 'goreleaser-pro'
+          distribution: goreleaser
+          # 'latest', 'nightly', or a semver
+          version: '~> v2'
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
