@@ -2,7 +2,7 @@ name: goreleaser
 
 on:
   release:
-    types: [created, published, released]
+    types: [edited, published, released]
 
 permissions:
   contents: write
