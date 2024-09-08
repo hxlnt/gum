@@ -26,7 +26,10 @@ func (o Options) Run() error {
 	theme.Focused.TextInput.Prompt = o.PromptStyle.ToLipgloss()
 
 	keymap := huh.NewDefaultKeyMap()
-	keymap.Text.NewLine.SetHelp("ctrl+j", "new line")
+        keymap.Text.Submit.SetKeys("ctrl+x")
+        keymap.Text.Submit.SetHelp("ctrl+x", "submit")
+        keymap.Text.NewLine.SetKeys("enter")
+	keymap.Text.NewLine.SetHelp("enter", "new line")
 
 	err := huh.NewForm(
 		huh.NewGroup(
