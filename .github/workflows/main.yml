@@ -1,0 +1,13 @@
+name: Release
+
+on: release
+
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: GoReleaser Action
+      # You may pin to the exact commit or the version.
+      # uses: goreleaser/goreleaser-action@5742e2a039330cbb23ebf35f046f814d4c6ff811
+      uses: goreleaser/goreleaser-action@v5.1.0
