@@ -3,7 +3,7 @@ package pager
 import (
 	"time"
 
-	"github.com/charmbracelet/gum/style"
+	"github.com/hxlnt/gum/style"
 )
 
 // Options are the options for the pager.

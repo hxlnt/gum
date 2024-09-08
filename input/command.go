@@ -9,7 +9,7 @@ import (
 	"github.com/charmbracelet/huh"
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/hxlnt/gum/internal/stdin"
 )
 
 // Run provides a shell script interface for the text input bubble.

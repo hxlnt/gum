@@ -10,8 +10,8 @@ import (
 	"github.com/charmbracelet/lipgloss"
 	ltable "github.com/charmbracelet/lipgloss/table"
 
-	"github.com/charmbracelet/gum/internal/stdin"
-	"github.com/charmbracelet/gum/style"
+	"github.com/hxlnt/gum/internal/stdin"
+	"github.com/hxlnt/gum/style"
 )
 
 // Run provides a shell script interface for rendering tabular data (CSV).

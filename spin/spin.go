@@ -21,8 +21,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/charmbracelet/gum/internal/exit"
-	"github.com/charmbracelet/gum/timeout"
+	"github.com/hxlnt/gum/internal/exit"
+	"github.com/hxlnt/gum/timeout"
 	"github.com/charmbracelet/x/term"
 
 	"github.com/charmbracelet/bubbles/spinner"

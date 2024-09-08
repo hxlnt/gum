@@ -3,21 +3,21 @@ package main
 import (
 	"github.com/alecthomas/kong"
 
-	"github.com/charmbracelet/gum/choose"
-	"github.com/charmbracelet/gum/completion"
-	"github.com/charmbracelet/gum/confirm"
-	"github.com/charmbracelet/gum/file"
-	"github.com/charmbracelet/gum/filter"
-	"github.com/charmbracelet/gum/format"
-	"github.com/charmbracelet/gum/input"
-	"github.com/charmbracelet/gum/join"
-	"github.com/charmbracelet/gum/log"
-	"github.com/charmbracelet/gum/man"
-	"github.com/charmbracelet/gum/pager"
-	"github.com/charmbracelet/gum/spin"
-	"github.com/charmbracelet/gum/style"
-	"github.com/charmbracelet/gum/table"
-	"github.com/charmbracelet/gum/write"
+	"github.com/hxlnt/gum/choose"
+	"github.com/hxlnt/gum/completion"
+	"github.com/hxlnt/gum/confirm"
+	"github.com/hxlnt/gum/file"
+	"github.com/hxlnt/gum/filter"
+	"github.com/hxlnt/gum/format"
+	"github.com/hxlnt/gum/input"
+	"github.com/hxlnt/gum/join"
+	"github.com/hxlnt/gum/log"
+	"github.com/hxlnt/gum/man"
+	"github.com/hxlnt/gum/pager"
+	"github.com/hxlnt/gum/spin"
+	"github.com/hxlnt/gum/style"
+	"github.com/hxlnt/gum/table"
+	"github.com/hxlnt/gum/write"
 )
 
 // Gum is the command-line interface for Gum.
@@ -91,7 +91,7 @@ type Gum struct {
 	Format format.Options `cmd:"" help:"Format a string using a template"`
 
 	// Input provides a shell script interface for the text input bubble.
-	// https://github.com/charmbracelet/bubbles/tree/master/textinput
+	// https://github.com/hxlnt/bubbles/tree/master/textinput
 	//
 	// It can be used to prompt the user for some input. The text the user
 	// entered will be sent to stdout.
@@ -119,7 +119,7 @@ type Gum struct {
 	Join join.Options `cmd:"" help:"Join text vertically or horizontally"`
 
 	// Pager provides a shell script interface for the viewport bubble.
-	// https://github.com/charmbracelet/bubbles/tree/master/viewport
+	// https://github.com/hxlnt/bubbles/tree/master/viewport
 	//
 	// It allows the user to scroll through content like a pager.
 	//
@@ -138,7 +138,7 @@ type Gum struct {
 	Pager pager.Options `cmd:"" help:"Scroll through a file"`
 
 	// Spin provides a shell script interface for the spinner bubble.
-	// https://github.com/charmbracelet/bubbles/tree/master/spinner
+	// https://github.com/hxlnt/bubbles/tree/master/spinner
 	//
 	// It is useful for displaying that some task is running in the background
 	// while consuming it's output so that it is not shown to the user.
@@ -155,7 +155,7 @@ type Gum struct {
 	Spin spin.Options `cmd:"" help:"Display spinner while running a command"`
 
 	// Style provides a shell script interface for Lip Gloss.
-	// https://github.com/charmbracelet/lipgloss
+	// https://github.com/hxlnt/lipgloss
 	//
 	// It allows you to use Lip Gloss to style text without needing to use Go.
 	// All of the styling options are available as flags.
@@ -180,7 +180,7 @@ type Gum struct {
 	Style style.Options `cmd:"" help:"Apply coloring, borders, spacing to text"`
 
 	// Table provides a shell script interface for the table bubble.
-	// https://github.com/charmbracelet/bubbles/tree/master/table
+	// https://github.com/hxlnt/bubbles/tree/master/table
 	//
 	// It is useful to render tabular (CSV) data in a terminal and allows
 	// the user to select a row from the table.
@@ -197,7 +197,7 @@ type Gum struct {
 	Table table.Options `cmd:"" help:"Render a table of data"`
 
 	// Write provides a shell script interface for the text area bubble.
-	// https://github.com/charmbracelet/bubbles/tree/master/textarea
+	// https://github.com/hxlnt/bubbles/tree/master/textarea
 	//
 	// It can be used to ask the user to write some long form of text
 	// (multi-line) input. The text the user entered will be sent to stdout.
@@ -207,7 +207,7 @@ type Gum struct {
 	Write write.Options `cmd:"" help:"Prompt for long-form text"`
 
 	// Log provides a shell script interface for logging using Log.
-	// https://github.com/charmbracelet/log
+	// https://github.com/hxlnt/log
 	//
 	// It can be used to log messages to output.
 	//

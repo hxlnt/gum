@@ -13,9 +13,9 @@ import (
 	"github.com/charmbracelet/x/term"
 	"github.com/sahilm/fuzzy"
 
-	"github.com/charmbracelet/gum/internal/exit"
-	"github.com/charmbracelet/gum/internal/files"
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/hxlnt/gum/internal/exit"
+	"github.com/hxlnt/gum/internal/files"
+	"github.com/hxlnt/gum/internal/stdin"
 )
 
 // Run provides a shell script interface for filtering through options, powered

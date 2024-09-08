@@ -11,7 +11,7 @@ import (
 	"github.com/charmbracelet/x/ansi"
 	"github.com/charmbracelet/x/term"
 
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/hxlnt/gum/internal/stdin"
 )
 
 const widthBuffer = 2

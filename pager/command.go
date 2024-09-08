@@ -6,7 +6,7 @@ import (
 
 	"github.com/charmbracelet/bubbles/viewport"
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/hxlnt/gum/internal/stdin"
 )
 
 // Run provides a shell script interface for the viewport bubble.

@@ -1,6 +1,6 @@
 package table
 
-import "github.com/charmbracelet/gum/style"
+import "github.com/hxlnt/gum/style"
 
 // Options is the customization options for the table command.
 type Options struct {
