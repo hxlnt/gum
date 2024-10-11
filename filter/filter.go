@@ -193,17 +193,19 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "ctrl+p", "ctrl+k", "up":
 			m.CursorUp()
 		case "tab":
-			if m.limit == 1 {
-				break // no op
-			}
-			m.ToggleSelection()
-			m.CursorDown()
+			m.quitting = true
+			return m, tea.Quit
+			// if m.limit == 1 {
+			// 	break // no op
+			// }
+			// m.ToggleSelection()
+			// m.CursorDown()
 		case "shift+tab":
-			if m.limit == 1 {
-				break // no op
-			}
-			m.ToggleSelection()
-			m.CursorUp()
+			// if m.limit == 1 {
+			// 	break // no op
+			// }
+			// m.ToggleSelection()
+			// m.CursorUp()
 		case "ctrl+@":
 			if m.limit == 1 {
 				break // no op
