@@ -193,6 +193,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "ctrl+p", "ctrl+k", "up":
 			m.CursorUp()
 		case "tab":
+			m.textinput.SetValue(m.matches[0].Str)
+			m.textinput.CursorEnd()
 			m.quitting = true
 			return m, tea.Quit
 			// if m.limit == 1 {
