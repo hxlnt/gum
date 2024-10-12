@@ -71,6 +71,15 @@ func (m model) View() string {
 	if m.reverse && len(m.matches) < m.viewport.Height {
 		s.WriteString(strings.Repeat("\n", m.viewport.Height-len(m.matches)))
 	}
+	if m.fuzzy {
+		if m.sort {
+			m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
+		} else {
+			m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
+		}
+	} else {
+		m.matches = exactMatches(m.textinput.Value(), m.choices)
+	}
 
 	// Since there are matches, display them so that the user can see, in real
 	// time, what they are searching for.
@@ -82,6 +91,15 @@ func (m model) View() string {
 		}
 		match := m.matches[i]
 
+		if m.fuzzy {
+			if m.sort {
+				m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
+			} else {
+				m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
+			}
+		} else {
+			m.matches = exactMatches(m.textinput.Value(), m.choices)
+		}
 		// If this is the current selected index, we add a small indicator to
 		// represent it. Otherwise, simply pad the string.
 		// The line's text style is set depending on whether or not the cursor
@@ -125,6 +143,8 @@ func (m model) View() string {
 				buf.WriteRune(c)
 			}
 		}
+		// Added to sort matches before keypress
+
 		// Flush text buffer.
 		s.WriteString(lineTextStyle.Render(buf.String()))
 
@@ -152,6 +172,7 @@ func (m model) View() string {
 		return lipgloss.JoinVertical(lipgloss.Left, header, view)
 	}
 	return view
+
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -239,9 +260,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 			// If the search field is empty, let's not display the matches
 			// (none), but rather display all possible choices.
-			// if m.textinput.Value() == "" {
-			// 	m.matches = matchAll(m.choices)
-			// }
+			if m.textinput.Value() == "" {
+				m.matches = matchAll(m.choices)
+			}
 
 			// For reverse layout, we need to offset the viewport so that the
 			// it remains at a constant position relative to the cursor.
@@ -313,6 +334,7 @@ func matchAll(options []string) []fuzzy.Match {
 	for i, option := range options {
 		matches[i] = fuzzy.Match{Str: option}
 	}
+
 	return matches
 }
 

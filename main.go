@@ -35,7 +35,7 @@ func main() {
 		if info, ok := debug.ReadBuildInfo(); ok && info.Main.Sum != "" {
 			Version = info.Main.Version
 		} else {
-			Version = "HXLNT2"
+			Version = "HXLNT.3"
 		}
 	}
 	version := fmt.Sprintf("gum version %s", Version)
