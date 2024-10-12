@@ -239,9 +239,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 			// If the search field is empty, let's not display the matches
 			// (none), but rather display all possible choices.
-			if m.textinput.Value() == "" {
-				m.matches = matchAll(m.choices)
-			}
+			// if m.textinput.Value() == "" {
+			// 	m.matches = matchAll(m.choices)
+			// }
 
 			// For reverse layout, we need to offset the viewport so that the
 			// it remains at a constant position relative to the cursor.
