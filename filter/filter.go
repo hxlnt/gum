@@ -71,15 +71,15 @@ func (m model) View() string {
 	if m.reverse && len(m.matches) < m.viewport.Height {
 		s.WriteString(strings.Repeat("\n", m.viewport.Height-len(m.matches)))
 	}
-	if m.fuzzy {
-		if m.sort {
-			m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
-		} else {
-			m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
-		}
-	} else {
-		m.matches = exactMatches(m.textinput.Value(), m.choices)
-	}
+	// if m.fuzzy {
+	// 	if m.sort {
+	// 		m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
+	// 	} else {
+	// 		m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
+	// 	}
+	// } else {
+	// 	m.matches = exactMatches(m.textinput.Value(), m.choices)
+	// }
 
 	// Since there are matches, display them so that the user can see, in real
 	// time, what they are searching for.
@@ -91,15 +91,16 @@ func (m model) View() string {
 		}
 		match := m.matches[i]
 
-		if m.fuzzy {
-			if m.sort {
-				m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
-			} else {
-				m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
-			}
-		} else {
-			m.matches = exactMatches(m.textinput.Value(), m.choices)
-		}
+		// if m.fuzzy {
+		// 	if m.sort {
+		// 		m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
+		// 	} else {
+		// 		m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
+		// 	}
+		// } else {
+		// 	m.matches = exactMatches(m.textinput.Value(), m.choices)
+		// }
+
 		// If this is the current selected index, we add a small indicator to
 		// represent it. Otherwise, simply pad the string.
 		// The line's text style is set depending on whether or not the cursor
@@ -214,7 +215,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "ctrl+p", "ctrl+k", "up":
 			m.CursorUp()
 		case "tab":
-			m.textinput.SetValue(m.matches[0].Str)
+			//m.textinput.SetValue(m.matches[0].Str)
 			m.textinput.CursorEnd()
 			m.quitting = true
 			return m, tea.Quit
@@ -248,21 +249,21 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 			// A character was entered, this likely means that the text input has
 			// changed. This suggests that the matches are outdated, so update them.
-			if m.fuzzy {
-				if m.sort {
-					m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
-				} else {
-					m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
-				}
-			} else {
-				m.matches = exactMatches(m.textinput.Value(), m.choices)
-			}
+			// if m.fuzzy {
+			// 	if m.sort {
+			// 		m.matches = fuzzy.Find(m.textinput.Value(), m.choices)
+			// 	} else {
+			m.matches = fuzzy.FindNoSort(m.textinput.Value(), m.choices)
+			// 	}
+			// } else {
+			// 	m.matches = exactMatches(m.textinput.Value(), m.choices)
+			// }
 
 			// If the search field is empty, let's not display the matches
 			// (none), but rather display all possible choices.
-			if m.textinput.Value() == "" {
-				m.matches = matchAll(m.choices)
-			}
+			// if m.textinput.Value() == "" {
+			// 	m.matches = matchAll(m.choices)
+			// }
 
 			// For reverse layout, we need to offset the viewport so that the
 			// it remains at a constant position relative to the cursor.
